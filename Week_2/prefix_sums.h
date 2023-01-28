@@ -1,5 +1,5 @@
-#ifndex __PREFIX_SUM_H
-#DEFINE __PREFIX_SUM_H
+#ifndef __PREFIX_SUM_H
+#define __PREFIX_SUM_H
 
 
 int prefix_sum(int array[], int last) {
@@ -18,13 +18,28 @@ bool non_negative_prefix_sum(int array[], int length) {
   for (int i = 0; i < length; i++) {
     int sum = prefix_sum(array, i);
 
-    if (sum >= 1){
+    if (sum >= 1) {
       is_non_negative = false;
       break;
     }
   }
 
   return is_non_negative;
+}
+
+bool non_positive_prefix_sum(int array[], int length) {
+  bool is_non_positive = true;
+
+  for (int i = 0; i < length; i++) {
+    int sum = prefix_sum(array, i);
+
+    if (sum < 0) {
+      is_non_positive = false;
+      break;
+    }
+  }
+
+  return is_non_positive;
 }
 
 #endif
