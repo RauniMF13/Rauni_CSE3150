@@ -1,0 +1,6 @@
+#include "doctest/doctest/doctest.h"
+#include "prefix_sum.h"
+
+int main(){
+  return 0;
+}
