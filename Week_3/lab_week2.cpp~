@@ -1,0 +1,62 @@
+#include "lab_week2.h"
+#include "../Week_2/prefix_sums.h"
+#include <iostream>
+
+using namespace std;
+
+int non_random_fcn() {
+  return 0;
+}
+
+int random_fcn() {
+  return rand();
+}
+
+void print_arr(int* arr, int length) {
+  for(int i = 0; i < length; i++) {
+      cout << arr[i] << " ";
+  }
+
+  cout << endl;
+}
+
+float* week2_algorithm(int* arr, int length, int (* random_fcn)(), int times_run) {
+  int num_passed = 0;
+  srand(time(nullptr));
+  
+  for(int i = 0; i < times_run; i++) {
+    int* shuffled_arr = fisher_yates(arr, length, random_fcn);
+    
+    bool is_non_positive = non_positive_prefix_sum(shuffled_arr, length);
+    bool is_non_negative = non_negative_prefix_sum(shuffled_arr, length);
+    
+    if(is_non_positive || is_non_negative) {
+      num_passed++;
+    }
+    
+    delete shuffled_arr;
+  }
+
+  float percent_passed = (float)num_passed / times_run;
+
+  float* result = (float*)malloc(sizeof(float) * 2);
+  result[0] = (float)num_passed;
+  result[1] = percent_passed;
+  
+  return result;
+}
+
+int main() {
+  int arr[] = {1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1};
+  int length = (sizeof(arr) / sizeof(int));
+  int n = 1000000;
+
+  float* results = week2_algorithm(arr, length, &random_fcn, n);
+
+  cout << "Number passed: " << results[0] << endl;
+  cout << "Percent passed: " << results[1] << endl;
+
+  delete results;
+  
+  return 0;
+}
