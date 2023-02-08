@@ -8,7 +8,7 @@ git pull
 ```
 2. Change directory to Week_3:
 ```bash
-cd Rauni_CSE3150/Week_03
+cd Rauni_CSE3150/Week_3
 ```
 3. Compile the unit tests.
 ```bash
