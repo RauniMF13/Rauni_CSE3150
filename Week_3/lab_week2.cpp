@@ -1,6 +1,7 @@
 #include "lab_week2.h"
 #include "../Week_2/prefix_sums.h"
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 

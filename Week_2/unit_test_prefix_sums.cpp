@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include "../doctest/doctest/doctest.h"
+#include "../doctest/doctest.h"
 #include "prefix_sums.h"
 
 int nums_1[] = {2,-3,3,2};

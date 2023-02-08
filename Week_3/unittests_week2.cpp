@@ -1,8 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include "../doctest/doctest/doctest.h"
+#include "../doctest/doctest.h"
 #include "lab_week2.h"
-#include <iostream>
 
 using namespace std;
 

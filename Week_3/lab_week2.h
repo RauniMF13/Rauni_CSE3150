@@ -1,5 +1,3 @@
-#include <cstdlib>
-
 #ifndef __FISHER_YATES_H
 #define __FISHER_YATES_H
 
