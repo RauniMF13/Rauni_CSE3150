@@ -6,7 +6,7 @@ git clone https://github.com/RauniMF13/Rauni_CSE3150.git
 ```bash
 git pull
 ```
-2. Clone the doctest repo and place it in the same directory as the Rauni_CSE3150 folder:
+2. If you haven't already, clone the doctest repo and place it in the same directory as the Rauni_CSE3150 folder:
 ```bash
 git clone https://github.com/doctest/doctest.git
 ```
