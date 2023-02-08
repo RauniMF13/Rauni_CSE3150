@@ -2,15 +2,19 @@
 ```bash
 git clone https://github.com/RauniMF13/Rauni_CSE3150.git
 ```
-2. Change directory to Week_2:
+2. Clone the doctest repo and place it in the same directory as the Rauni_CSE3150 folder:
+```bash
+git clone https://github.com/doctest/doctest.git
+```
+3. Change directory to Week_2:
 ```bash
 cd Rauni_CSE3150/Week_2
 ```
-3. Compile the unit tests.
+4. Compile the unit tests.
 ```bash
 g++ -o test unit_test_prefix_sums.cpp
 ```
-4. Run the tests.
+5. Run the tests.
 ```bash
 ./test
 ```
