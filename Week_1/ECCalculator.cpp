@@ -1,5 +1,7 @@
 #include <cstdlib>
 #include <iostream>
+#include "ECCalculator.h"
+
 
 using namespace std;
 
