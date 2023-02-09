@@ -1,0 +1,59 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+void print_arr(int* arr, int length) {
+  cout << "[" << arr[0];
+
+  for(int i = 1; i < length; i++) {
+    if (arr[i] == -1) {
+      cout << ",_"; 
+    } else {
+      cout << "," << arr[i];
+    }
+  }
+
+  cout << "]";
+}
+
+int ECRemoveSpace(int nums[], int val, int length) {
+  int k = 0;
+  
+  for(int x = 0; x < length; x++) {
+    if (nums[x] == val) {
+      nums[x] = -1;
+      k = x;
+      
+      for(int y = x; y < length - 1; y++) {
+	int temp = nums[y + 1];
+	nums[y + 1] = nums[y];
+	nums[y] = temp;
+      }
+
+      x--;
+    }
+  }
+
+  return k;
+}
+
+int main() {
+  int nums[] = {0,1,2,2,3,0,4,2};
+  int length = (sizeof(nums) / sizeof(int));
+  int val = 2;
+
+  cout << "Input: nums = ";
+
+  print_arr(nums, length);
+
+  cout << ", val = " << val << endl;
+
+  int k = ECRemoveSpace(nums, val, length);
+
+  cout << k << " Output: nums = ";
+
+  print_arr(nums, length);
+
+  cout << endl;
+}
