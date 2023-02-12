@@ -1,0 +1,16 @@
+#include "my_struct.h"
+#include <cstdio>
+
+using namespace std;
+
+struct my_struct create_struct(int number, int id) {
+  my_struct result;
+  result.number = number;
+  result.id = id;
+  return result;
+}
+
+
+void print_struct(my_struct s) {
+  cout << "Struct ID: " << s.id << ", Value: " << s.number << endl;
+}
