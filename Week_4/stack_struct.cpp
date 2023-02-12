@@ -2,6 +2,7 @@
 #include "my_struct.h"
 #include <cstdio>
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -44,5 +45,10 @@ int add_stack_elements(std::stack<struct my_struct> my_stack) {
     result += s.number;
     my_stack.pop();
   }
+
+  if(result < 0) {
+    throw logic_error("Sum of stack element values is negative.");
+  }
+  
   return result;
 }

@@ -17,6 +17,15 @@ int main() {
   int sum = add_stack_elements(stack_structs);
 
   cout << "Stack sum: " << sum << endl;
+
+  stack<my_struct> negative_stack_structs = read_stack_from_file("input_negative.txt");
+
+  
+  try {
+    add_stack_elements(negative_stack_structs);
+  } catch(const std::logic_error &e) {
+    cout << "Sum of struct element values is negative, exception was thrown!" << endl;
+  }
   
   return 0;
 }
