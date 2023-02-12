@@ -16,7 +16,7 @@ cd Rauni_CSE3150/Week_4
 ```
 4. Compile the unit tests.
 ```bash
-g++ -o test unittests_week4.cpp stack_struct.cpp my_struct.cpp
+g++ -o test unittests_week4.cpp stack_struct.cpp queue_struct.cpp my_struct.cpp
 ```
 5. Run the tests.
 ```bash
