@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include "doctest.h"
+#include "../../doctest/doctest/doctest.h"
 #include "neg_prefix_min.h"
 
 int nums_0[] = {};

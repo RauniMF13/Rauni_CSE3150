@@ -1,5 +1,6 @@
 #include <algorithm>
-#include "prefix_sum.h"
+#include "../Week_2/prefix_sums.h"
+#include "../Week_3/lab_week2.h"
 
 using namespace std;
 
@@ -12,10 +13,9 @@ int neg_prefix_min(int array[], const int length) {
   }
   
   return min_prefix;
- }
+}
  
 int first_deepest_prefix_min(int array[], const int depth, const int length) {
-  
   int min_prefix{0}, sum{0};
   
   int i;
@@ -24,11 +24,11 @@ int first_deepest_prefix_min(int array[], const int depth, const int length) {
     min_prefix = min(min_prefix, sum);
     if(depth == min_prefix) {
       break;
-      }
     }
-    
-    return i;
   }
+
+  return i;
+}
 
 
 
