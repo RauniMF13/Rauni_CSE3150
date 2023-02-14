@@ -2,6 +2,10 @@
 
 #include "../../doctest/doctest/doctest.h"
 #include "neg_prefix_min.h"
+#include "../Week_3/lab_week2.h"
+#include <iostream>
+
+using namespace std;
 
 int nums_0[] = {};
 int nums_1[] = {-1,-1,1,1};
@@ -49,4 +53,17 @@ TEST_CASE("Testing neg_prefix_min function") {
   CHECK(actual[0] == 1);
   CHECK(actual[1] == -1);
   
+}
+
+
+TEST_CASE("Testing balance_arr and how many sequences start with -1.") {
+  int* b_1 = balance_arr(nums_1, sizeof(nums_1)/sizeof(int), &random_fcn);
+  
+  CHECK(sizeof(b_1)/sizeof(int) == 2);
+
+  delete b_1;
+
+  float balanced_percent = lab3_algorithm(nums_6, sizeof(nums_6)/sizeof(int), &random_fcn, 1000000);
+  
+  CHECK(balanced_percent > 0);
 }

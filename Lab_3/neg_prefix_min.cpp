@@ -1,6 +1,8 @@
 #include <algorithm>
-#include "../Week_2/prefix_sums.h"
+#include <cstdlib>
+#include <iostream>
 #include "../Week_3/lab_week2.h"
+
 
 using namespace std;
 
@@ -51,4 +53,29 @@ int* shift_prefixes(int array[], const int length) {
   }
   
   return new_array;
+}
+
+int* balance_arr(int* arr, int length, int (* random_fcn)()) {
+  int* shuffled_arr = fisher_yates(arr, length, random_fcn);
+  int* result = shift_prefixes(shuffled_arr, length);
+  delete shuffled_arr;
+  return result;
+}
+
+float lab3_algorithm(int* arr, int length, int (* random_fcn)(), int times_run) {
+  srand(time(nullptr));
+  int num_removed;
+
+  
+  for(int i = 0; i < times_run; i++) {
+    int* balanced_arr = balance_arr(arr, length, random_fcn);
+
+    if(balanced_arr[0] == -1) {
+      num_removed++;
+    }
+
+    delete balanced_arr;
+  }
+
+  return (float)num_removed/times_run;
 }

@@ -21,7 +21,7 @@ void print_arr(int* arr, int length) {
   cout << endl;
 }
 
-int* fisher_yates(int arr[], int length, int (* random_fcn)()) {
+int* fisher_yates(int* arr, int length, int (* random_fcn)()) {
   int* result = (int*)malloc(sizeof(int) * length);
 
   for(int i = 0; i < length; i++) {
@@ -29,7 +29,7 @@ int* fisher_yates(int arr[], int length, int (* random_fcn)()) {
   }
 
   for(int i = 0; i < (length - 2); i++) {
-    int j = random_fcn() % (length - i) + i;
+    int j = random_fcn() % (length - i + 1) + i;
 
     int temp = result[i];
 
