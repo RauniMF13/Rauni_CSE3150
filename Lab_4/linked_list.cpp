@@ -1,0 +1,115 @@
+#include <iostream>
+
+#include "linked_list.h"
+
+using namespace std;
+
+
+struct linked_list* build_linked_list(const int n) {
+  if(n < 1) {
+    throw logic_error("Trying to make a linked list with an invalid length.");
+  }
+
+  struct linked_list* result = new linked_list;
+  result->length = 0;
+
+  struct node* cur_node = new node;
+  cur_node->number = 0;
+  cur_node->next = nullptr;
+
+  result->head = cur_node;
+  result->length++;
+  
+  for(int i = 1; i < n; i++) {
+    struct node* new_node = new node;
+    new_node->number = i;
+    new_node->next = nullptr;
+    
+    cur_node->next = new_node;
+    cur_node = new_node;
+
+    result->length++;
+  }
+
+  result->tail = cur_node;
+
+  return result;
+}
+
+void print_linked_list(struct linked_list* list) {
+  int length = list->length;
+
+  struct node* cur_node = list->head;
+  
+  for(int i = 0; i < length; i++) {
+    cout << "[" << cur_node->number << "]";
+    cur_node = cur_node->next;
+    if (i != (length - 1)) {
+      cout << "->";
+    }
+  }
+
+  cout << endl;
+}
+
+void delete_linked_list(struct linked_list* list) {
+  int length = list->length;
+
+  struct node* cur_node = list->head;
+
+  for(int i = 0; i < length; i++) {
+    struct node* prev_node = cur_node;
+    cur_node = cur_node->next;
+
+    delete prev_node;
+  }
+
+  delete list;
+}
+
+struct node** pointer_jump(struct linked_list* list) {
+  // disassembles the given linked list and returns a list of nodes all pointing to the tail node
+
+  int length = list->length;
+  node** result = (node**)malloc(sizeof(node*) * length);
+    
+  struct node* cur_node = list->head;
+
+  for(int i = 0; i < length; i++) {
+    struct node* next_node = cur_node->next;
+
+    cur_node->next = list->tail;
+
+    result[i] = cur_node;
+    
+    cur_node = next_node;
+  }
+
+  delete list;
+  
+  return result;
+}
+
+void print_nodes(struct node** nodes, const int length) {
+  //sizeof(nodes)/sizeof(struct node);
+  
+  for(int i = 0; i < length; i++) {
+    cout << "[" << nodes[i]->number << "]->[" << nodes[i]->next->number << "]";
+
+    if(i != (length - 1)) {
+      cout << ", ";
+    }
+  }
+
+  cout << endl;
+}
+
+void delete_nodes(struct node** nodes, const int length) {
+  //sizeof(nodes)/sizeof(struct node*);
+
+  for(int i = 0; i < length; i++) {
+    delete nodes[i];
+  }
+
+  delete nodes;
+}
