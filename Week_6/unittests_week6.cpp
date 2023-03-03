@@ -1,0 +1,32 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+
+#include "vectors_2D.h"
+#include "../../doctest/doctest/doctest.h"
+
+#include <iostream>
+
+using namespace std;
+
+TEST_CASE("2D Vector Functionality") {
+  vector<int_vector> vect_one = get_2D_vectors("vectors_1.txt");
+
+  print_vectors(vect_one);
+  
+  CHECK(vect_one.front().id == 0);
+
+  // struct copy constructor test
+  
+  int_vector last_vect = int_vector(vect_one.back());
+
+  CHECK(last_vect.id == 4);
+  CHECK(last_vect.x == 9);
+  CHECK(last_vect.y == 11);
+
+  // test input from empty file
+  
+  CHECK_THROWS_WITH(get_2D_vectors("empty.txt"), "Input file invalid.");
+
+  // test input from invalid format
+
+  CHECK_THROWS_WITH(get_2D_vectors("invalid.txt"), "Input file invalid.");
+}
