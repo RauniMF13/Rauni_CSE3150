@@ -1,0 +1,43 @@
+#include "vectors_doubles.h"
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+vector<int_vector> get_2D_vectors(string file_name) {
+  ifstream in_file;
+  in_file.open(file_name);
+  
+  vector<int_vector> vect;
+
+  int x{0}, y{0}, id{0};
+
+  while(in_file) {
+    int_vector i_v;
+    if(!(in_file >> x >> y)) {
+      if(in_file.eof()) {
+	break;
+      } else {
+	throw logic_error("Input file invalid.");
+      }
+    }
+    i_v = int_vector(id++, x, y);
+    vect.push_back(i_v);
+  }
+
+  if(vect.size() == 0) {
+    throw logic_error("Input file invalid.");
+  }
+  
+  in_file.close();
+  
+  return vect;
+}
+
+void print_vectors(vector<int_vector> vect) {
+  for(auto i = vect.end() - 1; i >= vect.begin(); i--) {
+    int_vector i_v = *i;
+    cout << i_v.id << ": " << i_v.x << " " << i_v.y << endl;
+  }
+}
