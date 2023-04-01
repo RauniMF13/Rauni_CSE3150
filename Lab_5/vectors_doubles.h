@@ -1,8 +1,8 @@
 #include <vector>
 #include <string>
 
-#ifndef __VECTORS_2D_H_
-#define __VECTORS_2D_H_
+#ifndef __VECTORS_DOUBLES_H_
+#define __VECTORS_DOUBLES_H_
 
 struct db_vector {
   int id;
@@ -13,7 +13,7 @@ struct db_vector {
   db_vector() : id(-1), x(0), y(0) {};
 };
 
-std::vector<struct db_vector> get_db_vectors(std::string file_name);
+std::vector<std::vector<struct db_vector>> get_db_vectors(std::string file_name);
 void print_vectors(std::vector<struct db_vector> vect);
 
 #endif
