@@ -1,0 +1,24 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+
+#include "linked_list.h"
+#include "../../doctest/doctest/doctest.h"
+
+using namespace std;
+
+TEST_CASE("Testing linked list creation / push / destructor") {
+  List my_list;
+
+  my_list.push(12);
+
+  CHECK(my_list.head->data == 12);
+
+  my_list.push(13);
+
+  CHECK(my_list.head->next->data == 12);
+  CHECK(my_list.head->data == 13);
+
+  my_list.push(14);
+  
+  CHECK(my_list.head->next->data == 13);
+}
+
