@@ -5,20 +5,30 @@
 #define __FRACTION_VECTORS_H_
 
 struct FractionMatrix {
-  std::vector<struct BigFraction> matrix;
+  std::vector<std::vector<struct BigFraction>> matrix;
 
-FractionMatrix(std::vector<struct BigFraction>) : matrix(matrix) {};
-
-  std::vector<bigint> operator*(struct FractionMatrix other) {
-    std::vector<bigint> result;
-    for (auto x = matrix.begin(); x <= matrix.end(); x++) {
-      bigint new_bigint;
-      for (auto y = other.matrix.begin(); y <= other.matrix.end(); y++) {
-	new_bigint += *x * *y;
-      }
-      result.push_back(new_bigint);
+  void print() {
+    for(auto i = matrix.begin(); i <= matrix.end(); i++) {
+      
     }
-    return result;
+  }
+
+FractionMatrix(std::vector<std::vector<struct BigFraction>> matrix) : matrix(matrix) {};
+
+  FractionMatrix operator*(struct FractionMatrix other) {
+    std::vector<std::vector<struct BigFraction>> result;
+    for (int i = 0; i < matrix.size(); i++) {
+      std::vector<struct BigFraction> sub_result;
+      for (int x = 0; x < matrix[i].size(); x++) {
+	BigFraction new_fraction;
+	for (int j = 0; j < other.matrix.size(); j++) {
+	  new_fraction = new_fraction + (matrix[i][x] * other.matrix[j][x]);
+	}
+	sub_result.push_back(new_fraction);
+      }
+      result.push_back(sub_result);
+    }
+    return FractionMatrix(result);
   }
 };
 
