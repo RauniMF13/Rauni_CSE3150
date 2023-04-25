@@ -61,17 +61,7 @@ SquareMatrix compute_reachability(SquareMatrix sm) {
     M = remove_edges(M);
     M = normalize_and_divide_by_two(M);
     SquareMatrix Z = get_zero_edges(M);
-
-    cout << l << ":" << endl;
-    M.print();
-    cout << "Z" << endl;
-    Z.print();
-    
     SquareMatrix MM  = (Z * M) * Z;
-
-    cout << "MM" << endl;
-    MM.print();
-    
     sm = MM;
   }
   result = sm;
